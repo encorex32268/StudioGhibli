@@ -1,6 +1,5 @@
 package com.lihan.studioghibli.app
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.lihan.studioghibli.core.presentation.ui.GhibliTheme
@@ -9,8 +8,6 @@ import com.lihan.studioghibli.core.presentation.ui.GhibliTheme
 @Preview
 fun App() {
     GhibliTheme {
-        Text(
-            text = "Test"
-        )
+        NavigationRoot()
     }
 }
