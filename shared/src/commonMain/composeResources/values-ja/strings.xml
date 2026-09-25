@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">スタジオジブリ</string>
+
+    <!-- Network Errors -->
+    <string name="error_bad_request">不正なリクエストです。</string>
+    <string name="error_request_timeout">リクエストがタイムアウトしました。もう一度お試しください。</string>
+    <string name="error_unauthorized">認証されていません。再度ログインしてください。</string>
+    <string name="error_forbidden">アクセスが拒否されました。</string>
+    <string name="error_not_found">リソースが見つかりませんでした。</string>
+    <string name="error_conflict">サーバーで競合が発生しました。</string>
+    <string name="error_too_many_requests">リクエストが多すぎます。しばらくしてから再試行してください。</string>
+    <string name="error_no_internet">インターネットに接続されていません。接続を確認してください。</string>
+    <string name="error_payload_too_large">送信データが大きすぎます。</string>
+    <string name="error_server_error">サーバーエラーが発生しました。しばらくしてからお試しください。</string>
+    <string name="error_service_unavailable">サービスは現在ご利用いただけません。</string>
+    <string name="error_serialization">データの解析に失敗しました。</string>
+    <string name="error_unknown_network">不明なネットワークエラーが発生しました。</string>
+
+    <!-- Local Errors -->
+    <string name="error_disk_full">空き容量が不足しています。</string>
+    <string name="error_local_not_found">ローカルデータが見つかりませんでした。</string>
+    <string name="error_unknown_local">不明なローカルエラーが発生しました。</string>
+</resources>

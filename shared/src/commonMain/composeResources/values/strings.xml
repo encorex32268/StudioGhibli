@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Studio Ghibli</string>
+
+    <!-- Network Errors -->
+    <string name="error_bad_request">Invalid request.</string>
+    <string name="error_request_timeout">The request timed out. Please try again.</string>
+    <string name="error_unauthorized">Unauthorized. Please sign in again.</string>
+    <string name="error_forbidden">Access denied.</string>
+    <string name="error_not_found">The requested resource could not be found.</string>
+    <string name="error_conflict">A server conflict occurred.</string>
+    <string name="error_too_many_requests">Too many requests. Please try again later.</string>
+    <string name="error_no_internet">No internet connection. Please check your network.</string>
+    <string name="error_payload_too_large">Payload is too large.</string>
+    <string name="error_server_error">A server error occurred. Please try again later.</string>
+    <string name="error_service_unavailable">The service is temporarily unavailable.</string>
+    <string name="error_serialization">Failed to process data from server.</string>
+    <string name="error_unknown_network">An unknown network error occurred.</string>
+
+    <!-- Local Errors -->
+    <string name="error_disk_full">Device storage is full.</string>
+    <string name="error_local_not_found">Local data not found.</string>
+    <string name="error_unknown_local">An unknown local error occurred.</string>
+</resources>

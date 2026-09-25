@@ -1,4 +1,4 @@
-package com.lihan.studioghibli
+package com.lihan.studioghibli.app
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable

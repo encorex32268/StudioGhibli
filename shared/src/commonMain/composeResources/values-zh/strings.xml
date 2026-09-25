@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">吉卜力工作室</string>
+
+    <!-- Network Errors -->
+    <string name="error_bad_request">無效的請求。</string>
+    <string name="error_request_timeout">請求逾時，請稍後再試。</string>
+    <string name="error_unauthorized">未授權，請重新登入。</string>
+    <string name="error_forbidden">存取被拒絕。</string>
+    <string name="error_not_found">找不到請求的資源。</string>
+    <string name="error_conflict">伺服器資料衝突。</string>
+    <string name="error_too_many_requests">請求過於頻繁，請稍後再試。</string>
+    <string name="error_no_internet">無法連線至網路，請檢查您的網路設定。</string>
+    <string name="error_payload_too_large">傳送資料量過大。</string>
+    <string name="error_server_error">伺服器發生錯誤，請稍後再試。</string>
+    <string name="error_service_unavailable">服務暫時無法使用，請稍後再試。</string>
+    <string name="error_serialization">資料解析失敗。</string>
+    <string name="error_unknown_network">發生未知的網路錯誤。</string>
+
+    <!-- Local Errors -->
+    <string name="error_disk_full">裝置儲存空間不足。</string>
+    <string name="error_local_not_found">找不到本地資料。</string>
+    <string name="error_unknown_local">發生未知的本地錯誤。</string>
+</resources>
