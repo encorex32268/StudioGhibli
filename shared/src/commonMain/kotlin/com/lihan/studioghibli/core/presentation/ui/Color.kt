@@ -54,7 +54,7 @@ val ColorScheme.MacaronGreen: Color
 val MacaronGreenLight get() = Color(0xFF98D7C2)
 val MacaronGreenDark get() = Color(0xFF6FA895)
 
-val ColorScheme.MacaronBlue: Color
+val MacaronBlue: Color
     @Composable
     get() {
         return if (isSystemInDarkTheme()){
@@ -65,3 +65,14 @@ val ColorScheme.MacaronBlue: Color
     }
 val MacaronBlueLight get() = Color(0xFF90CAF9)
 val MacaronBlueDark get() = Color(0xFF6497C4)
+
+
+val Gray: Color
+    @Composable
+    get() {
+        return if (isSystemInDarkTheme()){
+            Color.LightGray
+        }else{
+            Color.DarkGray
+        }
+    }

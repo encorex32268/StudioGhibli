@@ -13,12 +13,8 @@ class KtorFilmRemoteDataSource(
     private val httpClient: HttpClient
 ) : FilmRemoteDataSource {
 
-    companion object {
-        private const val BASE_URL = "https://ghibliapi.vercel.app"
-    }
-
     override suspend fun getFilms(): Result<List<Film>, DataError.Network> {
-        return httpClient.get<List<FilmDto>>("$BASE_URL/films")
+        return httpClient.get<List<FilmDto>>("/films")
             .map { dtos -> dtos.map { it.toDomain() } }
     }
 }

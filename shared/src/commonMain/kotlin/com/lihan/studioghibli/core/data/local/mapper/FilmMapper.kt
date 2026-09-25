@@ -52,7 +52,7 @@ fun FilmDto.toDomain(isFavorite: Boolean = false): Film {
         director = director.orEmpty(),
         releaseDate = release_date.orEmpty(),
         runningTime = running_time.orEmpty(),
-        rtScore = rtScore.orEmpty(),
+        rtScore = rt_score.orEmpty(),
         people = people,
         isFavorite = isFavorite
     )

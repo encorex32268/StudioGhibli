@@ -20,4 +20,6 @@
     <string name="error_disk_full">Device storage is full.</string>
     <string name="error_local_not_found">Local data not found.</string>
     <string name="error_unknown_local">An unknown local error occurred.</string>
+
+    <string name="minutes">mins</string>
 </resources>

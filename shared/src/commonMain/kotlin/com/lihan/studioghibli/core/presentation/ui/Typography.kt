@@ -53,6 +53,18 @@ fun getAppTypography(): Typography {
             fontSize = 22.sp,
             lineHeight = 28.sp
         ),
+        titleMedium = TextStyle(
+            fontFamily = fontFamily,
+            fontWeight = FontWeight.Medium,
+            fontSize = 18.sp,
+            lineHeight = 24.sp
+        ),
+        titleSmall = TextStyle(
+            fontFamily = fontFamily,
+            fontWeight = FontWeight.Normal,
+            fontSize = 16.sp,
+            lineHeight = 20.sp
+        ),
         bodyLarge = TextStyle(
             fontFamily = fontFamily,
             fontWeight = FontWeight.Normal,
@@ -62,7 +74,7 @@ fun getAppTypography(): Typography {
         ),
         bodyMedium = TextStyle(
             fontFamily = fontFamily,
-            fontWeight = FontWeight.Normal,
+            fontWeight = FontWeight.Medium,
             fontSize = 14.sp,
             lineHeight = 20.sp,
             letterSpacing = 0.25.sp
@@ -77,8 +89,20 @@ fun getAppTypography(): Typography {
         labelLarge = TextStyle(
             fontFamily = fontFamily,
             fontWeight = FontWeight.Medium,
+            fontSize = 16.sp,
+            lineHeight = 24.sp
+        ),
+        labelMedium = TextStyle(
+            fontFamily = fontFamily,
+            fontWeight = FontWeight.Medium,
             fontSize = 14.sp,
-            lineHeight = 20.sp
-        )
+            lineHeight = 16.sp
+        ),
+        labelSmall = TextStyle(
+            fontFamily = fontFamily,
+            fontWeight = FontWeight.Medium,
+            fontSize = 12.sp,
+            lineHeight = 14.sp
+        ),
     )
 }

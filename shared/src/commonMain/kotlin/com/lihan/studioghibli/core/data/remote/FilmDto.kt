@@ -14,6 +14,6 @@ data class FilmDto(
     val director: String?,
     val release_date: String?,
     val running_time: String?,
-    val rtScore: String?,
+    val rt_score: String?,
     val people: List<String> = emptyList()
 )

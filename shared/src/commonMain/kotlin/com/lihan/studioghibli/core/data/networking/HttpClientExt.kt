@@ -17,13 +17,15 @@ import io.ktor.util.network.UnresolvedAddressException
 import kotlinx.coroutines.CancellationException
 import kotlinx.serialization.SerializationException
 
+const val BASE_URL = "https://ghibliapi.vercel.app/"
+
 suspend inline fun <reified Response : Any> HttpClient.get(
     route: String,
     queryParameters: Map<String, Any?> = mapOf()
 ): Result<Response, DataError.Network> {
     return safeCall {
         get {
-            url(route)
+            url(constructRoute(route))
             queryParameters.forEach { (key, value) ->
                 parameter(key, value)
             }
@@ -31,51 +33,51 @@ suspend inline fun <reified Response : Any> HttpClient.get(
     }
 }
 
-suspend inline fun <reified Request : Any, reified Response : Any> HttpClient.post(
-    route: String,
-    body: Request,
-    queryParameters: Map<String, Any?> = mapOf()
-): Result<Response, DataError.Network> {
-    return safeCall {
-        post {
-            url(route)
-            setBody(body)
-            queryParameters.forEach { (key, value) ->
-                parameter(key, value)
-            }
-        }
-    }
-}
-
-suspend inline fun <reified Request : Any, reified Response : Any> HttpClient.put(
-    route: String,
-    body: Request,
-    queryParameters: Map<String, Any?> = mapOf()
-): Result<Response, DataError.Network> {
-    return safeCall {
-        put {
-            url(route)
-            setBody(body)
-            queryParameters.forEach { (key, value) ->
-                parameter(key, value)
-            }
-        }
-    }
-}
-
-suspend inline fun <reified Response : Any> HttpClient.delete(
-    route: String,
-    queryParameters: Map<String, Any?> = mapOf()
-): Result<Response, DataError.Network> {
-    return safeCall {
-        delete {
-            url(route)
-            queryParameters.forEach { (key, value) ->
-                parameter(key, value)
-            }
-        }
-    }
-}
+//suspend inline fun <reified Request : Any, reified Response : Any> HttpClient.post(
+//    route: String,
+//    body: Request,
+//    queryParameters: Map<String, Any?> = mapOf()
+//): Result<Response, DataError.Network> {
+//    return safeCall {
+//        post {
+//            url(route)
+//            setBody(body)
+//            queryParameters.forEach { (key, value) ->
+//                parameter(key, value)
+//            }
+//        }
+//    }
+//}
+//
+//suspend inline fun <reified Request : Any, reified Response : Any> HttpClient.put(
+//    route: String,
+//    body: Request,
+//    queryParameters: Map<String, Any?> = mapOf()
+//): Result<Response, DataError.Network> {
+//    return safeCall {
+//        put {
+//            url(route)
+//            setBody(body)
+//            queryParameters.forEach { (key, value) ->
+//                parameter(key, value)
+//            }
+//        }
+//    }
+//}
+//
+//suspend inline fun <reified Response : Any> HttpClient.delete(
+//    route: String,
+//    queryParameters: Map<String, Any?> = mapOf()
+//): Result<Response, DataError.Network> {
+//    return safeCall {
+//        delete {
+//            url(route)
+//            queryParameters.forEach { (key, value) ->
+//                parameter(key, value)
+//            }
+//        }
+//    }
+//}
 
 suspend inline fun <reified T> safeCall(
     execute: () -> HttpResponse
@@ -85,7 +87,8 @@ suspend inline fun <reified T> safeCall(
     } catch (e: UnresolvedAddressException) {
         e.printStackTrace()
         return Result.Error(DataError.Network.NO_INTERNET)
-    } catch (e: HttpRequestTimeoutException) {
+    }
+    catch (e: HttpRequestTimeoutException) {
         e.printStackTrace()
         return Result.Error(DataError.Network.REQUEST_TIMEOUT)
     } catch (e: SerializationException) {
@@ -115,5 +118,13 @@ suspend inline fun <reified T> responseToResult(
         429 -> Result.Error(DataError.Network.TOO_MANY_REQUESTS)
         in 500..599 -> Result.Error(DataError.Network.SERVER_ERROR)
         else -> Result.Error(DataError.Network.UNKNOWN)
+    }
+}
+
+fun constructRoute(route: String): String {
+    return when {
+        route.contains(BASE_URL) -> route
+        route.startsWith("/") -> BASE_URL + route
+        else -> "$BASE_URL/$route"
     }
 }
