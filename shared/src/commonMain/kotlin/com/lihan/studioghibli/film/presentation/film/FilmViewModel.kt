@@ -30,6 +30,7 @@ class FilmViewModel(
         FilmState(
             films = films
                 .map { it.toFilmUi() }
+                .sortedByDescending { it.releaseDate.toLong() }
                 .sortedByDescending { it.isFavorite },
             isLoading = isLoading,
             errorMessage = errorMessage
