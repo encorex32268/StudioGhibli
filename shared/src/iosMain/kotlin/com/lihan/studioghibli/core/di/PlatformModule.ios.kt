@@ -1,7 +1,11 @@
 package com.lihan.studioghibli.core.di
 
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.lihan.studioghibli.core.data.datastore.DATA_STORE_FILE_NAME
+import com.lihan.studioghibli.core.data.datastore.createDataStore
 import com.lihan.studioghibli.core.data.local.FilmDatabase
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.darwin.Darwin
@@ -29,4 +33,18 @@ actual val platformModule: Module = module {
             name = dbFilePath
         )
     }
+    single<DataStore<Preferences>> {
+        val documentDirectory = NSFileManager.defaultManager.URLForDirectory(
+            directory = NSDocumentDirectory,
+            inDomain = NSUserDomainMask,
+            appropriateForURL = null,
+            create = false,
+            error = null
+        )
+        val path = requireNotNull(documentDirectory?.path) { "Document directory not found" }
+        createDataStore(
+            producePath = { "$path/$DATA_STORE_FILE_NAME" }
+        )
+    }
 }
+

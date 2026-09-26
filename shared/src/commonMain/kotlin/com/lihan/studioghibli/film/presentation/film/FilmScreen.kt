@@ -13,11 +13,14 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
+
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -59,7 +62,7 @@ fun FilmRoot(
     )
 }
 
-@OptIn(ExperimentalSharedTransitionApi::class)
+@OptIn(ExperimentalSharedTransitionApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun FilmScreen(
     state: FilmState,
@@ -82,39 +85,47 @@ fun FilmScreen(
                         ),
                         color = MaterialTheme.colorScheme.onBackground
                     )
-                },
-                actions = {
-
                 }
             )
         }
     ) { paddingValues ->
-        Box(
+        PullToRefreshBox(
+            isRefreshing = state.isLoading,
+            onRefresh = { onAction(FilmAction.OnRefresh) },
             modifier = Modifier
                 .fillMaxSize()
-                .padding(paddingValues),
-            contentAlignment = Alignment.Center
+                .padding(paddingValues)
         ) {
             when {
                 state.isLoading && state.films.isEmpty() -> {
-                    CircularProgressIndicator()
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        CircularProgressIndicator()
+                    }
                 }
                 state.errorMessage != null && state.films.isEmpty() -> {
-                    Text(text = state.errorMessage.asString())
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(text = state.errorMessage.asString())
+                    }
                 }
                 else -> {
                     LazyVerticalGrid(
                         modifier = Modifier
-                            .fillMaxWidth()
+                            .fillMaxSize()
                             .padding(8.dp),
                         verticalArrangement = Arrangement.spacedBy(8.dp),
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
                         columns = GridCells.Fixed(3)
-                    ){
+                    ) {
                         items(
                             items = state.films,
                             key = { it.id }
-                        ){ film ->
+                        ) { film ->
                             FilmCard(
                                 id = film.id,
                                 imageUrl = film.imageUrl,

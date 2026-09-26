@@ -37,7 +37,7 @@ class FilmViewModel(
         )
     }.onStart {
         if (!hasLoadedInitialData) {
-            refreshFilms()
+            refreshFilms(forceRefresh = false)
             hasLoadedInitialData = true
         }
     }.stateIn(
@@ -48,16 +48,16 @@ class FilmViewModel(
 
     fun onAction(action: FilmAction) {
         when (action) {
-            is FilmAction.OnRefresh -> refreshFilms()
+            is FilmAction.OnRefresh -> refreshFilms(forceRefresh = true)
             is FilmAction.OnFilmClick -> Unit
         }
     }
 
-    private fun refreshFilms() {
+    private fun refreshFilms(forceRefresh: Boolean = false) {
         viewModelScope.launch {
             _isLoading.value = true
             _errorMessage.value = null
-            filmRepository.syncFilms()
+            filmRepository.syncFilms(forceRefresh = forceRefresh)
                 .onFailure { error ->
                     _errorMessage.value = error.asUiText()
                 }

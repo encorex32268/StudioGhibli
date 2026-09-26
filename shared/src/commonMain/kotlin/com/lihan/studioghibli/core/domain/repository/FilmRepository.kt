@@ -8,6 +8,6 @@ import kotlinx.coroutines.flow.Flow
 interface FilmRepository {
     fun getFilms(): Flow<List<Film>>
     fun getFilmById(id: String): Flow<Film?>
-    suspend fun syncFilms(): EmptyResult<DataError.Network>
+    suspend fun syncFilms(forceRefresh: Boolean = false): EmptyResult<DataError.Network>
     suspend fun updateFavorite(id: String, isFavorite: Boolean)
 }
