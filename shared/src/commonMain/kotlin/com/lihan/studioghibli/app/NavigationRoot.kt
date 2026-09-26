@@ -28,14 +28,12 @@ fun NavigationRoot(
                     sharedTransitionScope = this@SharedTransitionLayout,
                     animatedVisibilityScope = this@composable,
                     onNavigateToDetail = { filmId ->
-                        println("Click: Id: ${filmId}")
                         navController.navigate(Route.FilmDetailRoute(filmId = filmId))
                     }
                 )
             }
             composable<Route.FilmDetailRoute> { backStackEntry ->
                 val route = backStackEntry.toRoute<Route.FilmDetailRoute>()
-                println("Detail: Id: ${route.filmId}")
                 FilmDetailRoot(
                     filmId = route.filmId,
                     sharedTransitionScope = this@SharedTransitionLayout,

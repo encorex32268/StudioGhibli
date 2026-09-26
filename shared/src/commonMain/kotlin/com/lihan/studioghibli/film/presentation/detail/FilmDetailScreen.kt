@@ -302,7 +302,7 @@ fun FilmDetailScreen(
                 Icon(
                     imageVector = if (isFavorite) HeartFilled else HeartOutline,
                     contentDescription = stringResource(Res.string.favorite),
-                    tint = MaterialTheme.colorScheme.MacaronPink
+                    tint = MaterialTheme.colorScheme.error
                 )
             }
         }

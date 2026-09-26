@@ -22,26 +22,22 @@ class FilmViewModel(
     private val _isLoading = MutableStateFlow(false)
     private val _errorMessage = MutableStateFlow<UiText?>(null)
 
-    init {
-        viewModelScope.launch {
-            filmRepository.syncFilms()
-        }
-    }
-
     val state = combine(
         filmRepository.getFilms(),
         _isLoading,
         _errorMessage
     ) { films, isLoading, errorMessage ->
         FilmState(
-            films = films.map { it.toFilmUi() },
+            films = films
+                .map { it.toFilmUi() }
+                .sortedByDescending { it.isFavorite },
             isLoading = isLoading,
             errorMessage = errorMessage
         )
     }.onStart {
         if (!hasLoadedInitialData) {
-            hasLoadedInitialData = true
             refreshFilms()
+            hasLoadedInitialData = true
         }
     }.stateIn(
         scope = viewModelScope,
@@ -51,7 +47,6 @@ class FilmViewModel(
 
     fun onAction(action: FilmAction) {
         when (action) {
-            is FilmAction.OnToggleFavorite -> toggleFavorite(action.id, action.isFavorite)
             is FilmAction.OnRefresh -> refreshFilms()
             is FilmAction.OnFilmClick -> Unit
         }
@@ -66,12 +61,6 @@ class FilmViewModel(
                     _errorMessage.value = error.asUiText()
                 }
             _isLoading.value = false
-        }
-    }
-
-    private fun toggleFavorite(id: String, isFavorite: Boolean) {
-        viewModelScope.launch {
-            filmRepository.updateFavorite(id, isFavorite)
         }
     }
 }
