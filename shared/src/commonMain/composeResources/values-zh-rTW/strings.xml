@@ -20,4 +20,10 @@
     <string name="error_disk_full">裝置儲存空間不足。</string>
     <string name="error_local_not_found">找不到本地資料。</string>
     <string name="error_unknown_local">發生未知的本地錯誤。</string>
+    <string name="minutes">分鐘</string>
+    <string name="back">返回</string>
+    <string name="synopsis">劇情簡介</string>
+    <string name="director">導演</string>
+    <string name="release_date">上映年份</string>
+    <string name="favorite">收藏</string>
 </resources>

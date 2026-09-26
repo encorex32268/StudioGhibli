@@ -26,8 +26,8 @@ val ColorScheme.MacaronPink: Color
             MacaronPinkLight
         }
     }
-val ColorScheme.MacaronPinkLight get() = Color(0xFFF7A8B8)
-val ColorScheme.MacaronPinkDark get() = Color(0xFFD67B8E)
+val MacaronPinkLight get() = Color(0xFFF7A8B8)
+val MacaronPinkDark get() = Color(0xFFD67B8E)
 
 val MacaronYellow: Color
     @Composable

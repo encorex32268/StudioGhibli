@@ -22,4 +22,9 @@
     <string name="error_unknown_local">An unknown local error occurred.</string>
 
     <string name="minutes">mins</string>
+    <string name="back">Back</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="director">Director</string>
+    <string name="release_date">Release Year</string>
+    <string name="favorite">Favorite</string>
 </resources>

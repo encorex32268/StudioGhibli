@@ -4,6 +4,8 @@ import kotlinx.serialization.Serializable
 
 sealed interface Route {
     @Serializable
-    data object FilmRoute
+    data object FilmRoute : Route
 
+    @Serializable
+    data class FilmDetailRoute(val filmId: String) : Route
 }

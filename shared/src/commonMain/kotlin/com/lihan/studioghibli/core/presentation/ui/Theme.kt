@@ -1,5 +1,6 @@
 package com.lihan.studioghibli.core.presentation.ui
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.material3.MaterialTheme
@@ -25,7 +26,7 @@ private val DarkColorScheme = darkColorScheme(
 
 @Composable
 fun GhibliTheme(
-    darkTheme: Boolean = false,
+    darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
     val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
