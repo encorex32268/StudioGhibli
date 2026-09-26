@@ -3,7 +3,6 @@
 Studio Ghibli is a modern, cross-platform movie catalog application for **Android** and **iOS**, crafted with **Kotlin Multiplatform (KMP)**, **Compose Multiplatform**, and industry-standard **Clean Architecture**. It showcases the complete collection of legendary Studio Ghibli animations with a resilient offline-first caching mechanism, smooth shared element transitions, and full multi-language localization.
 
 > [!NOTE]
-> This is an independent personal project developed by **[LiHan](https://github.com/encorex32268)**.
 > All movie data is provided by the public [Studio Ghibli API](https://ghibliapi.dev/#).
 
 ---
