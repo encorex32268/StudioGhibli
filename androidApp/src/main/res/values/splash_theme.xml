@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Starting splash theme extending Theme.SplashScreen -->
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <!-- Background color of the splash screen -->
+        <item name="windowSplashScreenBackground">@color/splash_background</item>
+
+        <!-- Centered splash icon -->
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_round</item>
+
+        <!-- Theme to switch to once splash screen is dismissed -->
+        <item name="postSplashScreenTheme">@style/Theme.StudioGhibli</item>
+    </style>
+</resources>
